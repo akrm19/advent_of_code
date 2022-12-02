@@ -1,13 +1,15 @@
-maxCals = 0
+calsCounts = []
 currentCals = 0
 
 with open("./input.txt", "r") as input:
     for line in input.readlines():
         if line.strip() == "":
-            if currentCals > maxCals:
-                maxCals = currentCals
+            calsCounts.append(currentCals)
             currentCals = 0
         else:
             currentCals += int(line)
 
-print(maxCals)
+calsCounts.sort(reverse=True)
+
+# Part 2:
+print(sum(calsCounts[:3]))
